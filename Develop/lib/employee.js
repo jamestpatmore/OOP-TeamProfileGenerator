@@ -1,6 +1,6 @@
 class Employee{
     // constructor function creating the objects/elements of the employee class
-    constructor({name, id, email}) {
+    constructor(name, id, email) {
         this.name = name;
         this.id = id;
         this.email = email;
@@ -16,6 +16,10 @@ class Employee{
 
     getEmail(){
         return this.email;
+    }
+
+    getRole() {
+        return "Employee";
     }
 }
 

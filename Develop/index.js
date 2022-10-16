@@ -7,7 +7,7 @@ const Intern = require("./lib/intern");
 const generateHTML = require("./utils/generateHTML");
 const path = require("path");
 const { off } = require("process");
-const outputDir = path.resolve(_dirname, "output");
+const outputDir = path.resolve(__dirname, "output");
 const outputPath = path.join(outputDir, "team.html");
 const employees = [];
 
@@ -18,7 +18,14 @@ const promptManager = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'What is your name?',
+            message: 
+            `
+            ==================
+            Hello Manager!!!!!
+            ==================
+            What is your name?
+            ==================
+            `,
             validate: nameInput => {
                 if(nameInput) {
                     return true;
@@ -195,6 +202,19 @@ const promptIntern = () => {
         }, 
         {
             type: 'input',
+            name: 'employeeId',
+            message: 'Enter your Employee ID',
+            validate: employeeId => {
+                if(employeeId) {
+                    return true;
+                } else {
+                    console.log("Please enter your Employee ID");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
             name: 'school',
             message: 'Enter your school',
             validate: school => {
@@ -221,7 +241,7 @@ const promptIntern = () => {
         },
     ]).then(answers => {
         console.log(answers);
-        const intern = new Intern(answers.name, answers.school, answers.email);
+        const intern = new Intern(answers.name, answers.school, answers.email, answers.employeeId);
         employees.push(intern);
         promptMenu();
     })
