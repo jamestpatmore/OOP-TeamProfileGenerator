@@ -3,7 +3,7 @@ const generateTeam = (team) => {
     console.log(team);
 
     const html = [];
-
+    // creating a boilerplated template literal for how i want the hmtl to be formatted with the data that is recieved
     const generateManager = manager => {
         console.log(manager);
         let managerHtml = `
@@ -58,6 +58,8 @@ const generateTeam = (team) => {
       </div>
         `;
         html.push(internHtml);
+        // one more note i cant also figure out why it is creating a box for the user input as well as hyperlinkng the intern
+        // name//role//icon 
     }
 
     for (let i = 0; i < team.length; i++) {
@@ -70,6 +72,8 @@ const generateTeam = (team) => {
         if (team[i].getRole() === "Intern") {
             generateIntern(team[i]);
         }
+
+        // generating the html literals for whatever role might be called // manager is definitive 
     }
 
     return html.join('');

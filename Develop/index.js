@@ -9,7 +9,9 @@ const path = require("path");
 const { off } = require("process");
 const outputDir = path.resolve(__dirname, "output");
 const outputPath = path.join(outputDir, "team.html");
+// file directory as well as the output for that which will be referenced towards the end
 const employees = [];
+// pushing the input from inquirer to the employees array storing all of the inputed data 
 
 
 
@@ -34,6 +36,7 @@ const promptManager = () => {
                     return false;
                 }
             }
+            // validdate function used for the inputs to create a neccessity for input
         }, 
         {
             type: 'input',
@@ -107,6 +110,10 @@ const promptMenu = () => {
             default:
                 buildTeam();
         }
+        // after creating the initial manager startup for the prompt
+        // the user is then given a choice to create the roles they need
+        // i feel as if there already needs to be a manager in place so that is the init
+        // if you will to the prompt
     })
 
 }
@@ -169,6 +176,8 @@ const promptEngineer = () => {
                     console.log("Please enter your Github Username");
                     return false;
                 }
+                // im having issues with this returning input on/off in the html and am not sure why
+                // but it is storing the input regardless ??
             }
         },
     ]).then(answers => {
@@ -258,6 +267,8 @@ const buildTeam = () => {
         fs.mkdirSync(outputDir)
     }
     fs.writeFileSync(outputPath, generateHTML(employees), "utf-8");
+    // syncing this data with the generatehtml.js and outputing the information into the 
+    // generated file 
 }
 
 promptManager();
